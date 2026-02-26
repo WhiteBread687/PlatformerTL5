@@ -47,11 +47,11 @@ TagManager:
   - name: BG1
     uniqueID: 921487863
     locked: 0
-  - name: BG2
-    uniqueID: 305407305
-    locked: 0
   - name: BG3
     uniqueID: 1989641991
+    locked: 0
+  - name: BG2
+    uniqueID: 305407305
     locked: 0
   - name: MainCharacter
     uniqueID: 1246851113
