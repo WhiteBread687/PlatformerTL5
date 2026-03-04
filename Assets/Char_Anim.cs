@@ -13,6 +13,7 @@ public class Char_Anim : MonoBehaviour
 
     private bool moving = false;
     private bool facingLeft = false;
+    private bool isGrounded = false;
 
     public AudioSource sfxSource;
     public AudioClip jumpClip;
@@ -68,7 +69,7 @@ public class Char_Anim : MonoBehaviour
 
     void HandleJump()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             if (jumpClip != null)
@@ -124,5 +125,13 @@ public class Char_Anim : MonoBehaviour
         animator.SetBool("Moving", moving);
         animator.SetBool("FacingLeft", facingLeft);
     }
-}
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        isGrounded = true;
+    }
 
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        isGrounded = false;
+    }
+}
