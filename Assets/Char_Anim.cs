@@ -20,16 +20,24 @@ public class Char_Anim : MonoBehaviour
     private bool isDashing = false;
     private float nextDashTime = 0f;
 
+    [Header("Shooting")] //Nastia: added shooting variables
+    public Transform firePoint;
+    public GameObject bulletPrefab;
+    public float bulletSpeed = 12f;
+
+
     private bool moving = false;
     private bool facingLeft = false;
     private bool isGrounded = false;
 
+    [Header("Audio")] //Nastia: added header just for organization in the inspector
     public AudioSource sfxSource;
     public AudioClip jumpClip;
     public AudioClip powerupClip;
     public AudioClip coinClip;
     public AudioClip enemyKillClip;
     public AudioClip levelFinishClip;
+    public AudioClip shootClip; //Nastia: added shooting sound effect clip
 
     Rigidbody2D rb;
     Animator animator;
@@ -56,6 +64,7 @@ public class Char_Anim : MonoBehaviour
         }
 
         HandleDash();
+        HandleShoot(); //Nastia: added shooting handler
         HandleAnimation();
     }
 
@@ -103,6 +112,22 @@ public class Char_Anim : MonoBehaviour
             StartCoroutine(DashCoroutine());
         }
     }
+
+    void HandleShoot() //Nastia: added shooting function
+{
+    if (Keyboard.current.cKey.wasPressedThisFrame)
+    {
+        Vector2 dir = facingLeft ? Vector2.left : Vector2.right;
+
+        GameObject b = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+
+        sfxSource.PlayOneShot(shootClip);
+
+        Rigidbody2D brb = b.GetComponent<Rigidbody2D>();
+        if (brb != null) //checks that the bullet prefab has a Rigidbody2D component
+            brb.linearVelocity = dir * bulletSpeed;
+    }
+}
 
     IEnumerator DashCoroutine()
     {

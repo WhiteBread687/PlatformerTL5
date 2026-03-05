@@ -516,6 +516,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &174383063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 174383064}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &174383064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174383063}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1698344808}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &333612975
 GameObject:
   m_ObjectHideFlags: 0
@@ -2959,7 +2990,8 @@ Transform:
   m_LocalPosition: {x: -0.036, y: -0.592, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 174383064}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1698344809
@@ -2978,12 +3010,20 @@ MonoBehaviour:
   jumpForce: 5
   mult: 2
   dur: 4
+  dashSpeed: 14
+  dashTime: 0.15
+  dashCooldown: 0.5
+  disableGravityDuringDash: 1
+  firePoint: {fileID: 174383064}
+  bulletPrefab: {fileID: 8611734884726093674, guid: d184ec1d23fcf264594faf0134fc2a0a, type: 3}
+  bulletSpeed: 12
   sfxSource: {fileID: 1698344811}
   jumpClip: {fileID: 8300000, guid: 8bca9165f94406349bf9e0e371c346c0, type: 3}
   powerupClip: {fileID: 8300000, guid: ce8d108e616cc424bbbae3b63b5d6cb0, type: 3}
   coinClip: {fileID: 8300000, guid: da6a0443af51aee48b593e53165cf27f, type: 3}
   enemyKillClip: {fileID: 8300000, guid: 0fe66daa05080e14395b9d6a146341ae, type: 3}
   levelFinishClip: {fileID: 8300000, guid: 376fd03400a202f4cb1a1131e40523a7, type: 3}
+  shootClip: {fileID: 8300000, guid: e47932785fdf07141a075b99e3b1d83c, type: 3}
 --- !u!114 &1698344810
 MonoBehaviour:
   m_ObjectHideFlags: 0
